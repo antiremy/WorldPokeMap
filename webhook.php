@@ -21,10 +21,6 @@ if($gjson->type == "pokemon") {
   $move1 = $gjson->message->move_1;
   $move2 = $gjson->message->move_2;
   $time = date("Y/m/d H:i:s T", $gjson->message->disappear_time);
-  if ($time < time()) {
-    $time = strtotime($time) + 60*60;
-    $time = gmdate("Y/m/d H:i:s T", $time);
-  }
   $rarity = $rarities->$pid->rarity;
   $params = [
     'index' => 'pokemon',

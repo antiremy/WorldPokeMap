@@ -4,13 +4,18 @@
     <title>World PokeMap Concept</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <!-- <link rel="stylesheet" href="css/jquery-ui.structure.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.theme.min.css" />
+    <link rel="stylesheet" href="css/jquery-ui.min.css" /> -->
     <link rel="stylesheet" href="css/leaflet.css" />
     <link rel="stylesheet" href="css/marker-cluster-default.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
     <link rel="stylesheet" href="css/leaflet-sidebar.min.css" />
     <link rel="stylesheet" href="css/leaflet-gplaces-autocomplete.css" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
@@ -22,16 +27,55 @@
             width: 300px;
         }
 
+		#window {
+    color: black !important;
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,0.93);
+	  border: 1px solid #a0a0a0;
+    border-radius: 10px;
+    width: 280px;
+    height: 280px;
+    top: 50%;
+    margin-top: -120px;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 2000;
+    padding: 10px;
+    text-align: center;
+    overflow: auto;
+}
+.sidebar.collapsed {
+    height: 200px;
+}
+.sidebar-left .sidebar-tabs {
+    height: 350px;
+	}
+	.sidebar-left .sidebar-content {
+	height: 350px;
+	}
+.sidebar {
+height: 350px;
+}
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
     </style>
-    <script src="https://code.jquery.com/jquery-1.12.2.min.js"   integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous"></script>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/jquery.autocomplete.min.js"></script>
     <script src="lib/leaflet.js"></script>
-    <script src="lib/elasticsearch.js"></script>
     <script src="lib/ngeohash.js"></script>
     <script src="lib/leaflet.markercluster.js"></script>
     <script src="lib/bootstrap.min.js"></script>
     <script src="lib/leaflet-sidebar.min.js"></script>
     <script src="lib/leaflet-gplaces-autocomplete.js"></script>
-    <script src="lib/js.cookie.js"></script>
+    <script src="lib/store.min.js"></script>
+    <script src="lib/push.min.js"></script>
+    <!-- <script src="lib/bootstrap3-typeahead.min.js"></script>
+    <script src="lib/bootstrap-tokenfield.min.js"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***&libraries=places"></script>
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
@@ -50,7 +94,7 @@
      <!-- Tab panes -->
      <div class="sidebar-content">
          <div class="sidebar-pane" id="options">
-           <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+          <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
           <div class="checkbox">
             <label>
               <input type="checkbox" data-toggle="toggle" id="commonToggle">
@@ -81,6 +125,16 @@
               Ultra Rare
             </label>
           </div>
+          <label>
+            <input type="text" class="form-control" id="pokeHide" value=""/>
+            Hide Pokemon
+          </label>
+          <div class="form-group">
+            <label>
+              <span><input type="number" id="notifyIV" min="0" max="100" data-bind="value:notifyRarity" />%</span>
+              Notify of IV
+            </label>
+          </div>
 
          </div>
 
@@ -103,7 +157,41 @@
 
      </div>
    </div>
-
+  <div id="window">
+        <p style="
+    /* color: #212121; */
+    font-size: 14px;
+    margin: 0px !important;
+    font-weight: 400;
+"><p>Welcome to WorldPokeMap!<p><br>
+        <p style="
+    font-size: 15px;
+margin-top: -30px;
+"><b>We are adding back in cities, please be patient. <br>Support us by sharing our website or donating.</b><br><br>
+        <hr style="
+    margin-top: -20px;
+    margin-bottom: 10px;
+">
+       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="4WRHQXD55HCJ6">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+        <br><br>
+        <button class="close" onclick="getElementById('window').style.visibility= 'hidden';" style="
+    position: absolute;
+    margin-top: -25px;
+    margin-left: -15px;
+    padding: 2.2px;
+    color: #585858 !important;
+    background-color: rgba(60, 60, 60, 0);
+">
+       <i class="fa fa-times-circle fa-2x" style="
+    color: red;
+"></i>
+        </button>
+    </div>
   <div id="map" class="sidebar-map"></div>
 </div>
 <script src="lib/map.js"></script>

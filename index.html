@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="css/marker-cluster-default.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
-	<link rel="stylesheet" href="css/main.css" />
+	   <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/leaflet-sidebar.min.css" />
     <link rel="stylesheet" href="css/leaflet-gplaces-autocomplete.css" />
 
@@ -66,10 +66,17 @@ p {
 }
 #header > h3 {
 color: #191919 !important;}
+.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
+.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
+.autocomplete-selected { background: #F0F0F0; }
+.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
+.autocomplete-group { padding: 2px 5px; }
+.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
+
 
     </style>
     <script src="lib/jquery-3.1.1.min.js"></script>
-    <script src="lib/jquery-ui.min.js"></script>
+    <script src="lib/jquery.autocomplete.min.js"></script>
     <script src="lib/leaflet.js"></script>
     <script src="lib/ngeohash.js"></script>
     <script src="lib/leaflet.markercluster.js"></script>
@@ -86,7 +93,7 @@ color: #191919 !important;}
 <body>
 <header id="header">
        <div class="logo">PokéJoin </div>
-	    
+
 <img src="https://images-2.discordapp.net/.eJwFwe0NgyAQANBdGIC7IseHMzT91QUIEjRRj8CZNGnc3ff-6uq7mtUq0sYMsGwjc1_0EO6pFl2Z615S24bOfEASSXk9yikDDEYbXo7IxwkjkkMw1llCP3nEgMFES_Dhb_nJmyvrdlZ1P27iI8A.dkdSgMI9w0R9peV9UaDEqJmKQiE?width=300&amp;height=300" style="
     width: 40px;
     position: inherit;
@@ -108,7 +115,7 @@ color: #191919 !important;}
              <li><a href="https://blog.worldpokemap.com"" role="tab"><i class="fa fa-money"></i></a></li>
              <li><a href="https://twitter.com/soflopokego" role="tab" target="_blank"><i class="fa fa-twitter"></i></a></li>
 			 <li><a href="https://www.facebook.com/PokeJoin/" role="tab" target="_blank"><i class="fa fa-facebook"></i></a></li>
-			
+
          </ul>
      </div>
 
@@ -251,4 +258,3 @@ margin-top: -30px;
 <script src="lib/map.js"></script>
 
 </body>
-

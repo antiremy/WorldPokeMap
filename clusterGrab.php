@@ -15,7 +15,7 @@ $json = '{
       "bool":{
         "must": {
           "range" : {
-            "disappearTime" : {"gte": "now","lte": "now+1d/s"}
+            "disappearTime" : {"gte": "now/s","lte": "now+15m/s"}
           }
         },
          "filter":{
