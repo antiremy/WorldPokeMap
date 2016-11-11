@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/marker-cluster-default.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+	<link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/leaflet-sidebar.min.css" />
     <link rel="stylesheet" href="css/leaflet-gplaces-autocomplete.css" />
 
@@ -22,8 +23,7 @@
     <![endif]-->
     <style>
         html, body, #map{ height: 100%; padding: 0; margin: 0;}
-
-        .sidebar {
+		   .sidebar {
             width: 300px;
         }
 
@@ -47,7 +47,11 @@
 }
 .sidebar.collapsed {
     height: 200px;
+	margin-top: 50px;
 }
+.sidebar-tabs>ul>li {
+    margin-left: -13px !important;
+	}
 .sidebar-left .sidebar-tabs {
     height: 350px;
 	}
@@ -57,6 +61,12 @@
 .sidebar {
 height: 350px;
 }
+p {
+    margin: 0 0 .5em 0 !important;
+}
+#header > h3 {
+color: #191919 !important;}
+
     </style>
     <script src="lib/jquery-3.1.1.min.js"></script>
     <script src="lib/jquery-ui.min.js"></script>
@@ -74,14 +84,31 @@ height: 350px;
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 </head>
 <body>
+<header id="header">
+       <div class="logo">PokéJoin </div>
+	    
+<img src="https://images-2.discordapp.net/.eJwFwe0NgyAQANBdGIC7IseHMzT91QUIEjRRj8CZNGnc3ff-6uq7mtUq0sYMsGwjc1_0EO6pFl2Z615S24bOfEASSXk9yikDDEYbXo7IxwkjkkMw1llCP3nEgMFES_Dhb_nJmyvrdlZ1P27iI8A.dkdSgMI9w0R9peV9UaDEqJmKQiE?width=300&amp;height=300" style="
+    width: 40px;
+    position: inherit;
+	    margin-top: 6px;
+">
+</div></div>
+<div class="mobilehide1"><h1><a href="https://forum.pokejoin.com/get-your-area-covered/" class="1">Add Your Area / City</a></h1></div>
+<h3><i class="fa fa-star" aria-hidden="true"></i> <a href="https://pokejoin.com/stats">Nests & Spawns</a></h3>
+<h3><a href="https://forum.pokejoin.com/faq/"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a></h3>
+<h3><a href="https://forum.pokejoin.com/pokejoin-update/">Unlock Pro</a></h3>
+
+      </header>
   <div id="sidebar" class="sidebar collapsed">
      <!-- Nav tabs -->
      <div class="sidebar-tabs">
          <ul role="tablist">
              <li><a href="#options" role="tab"><i class="fa fa-gear"></i></a></li>
              <li><a href="javascript:;" id="location" role="tab" target="_blank"><i class="fa fa-location-arrow"></i></a></li>
-             <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
+             <li><a href="https://blog.worldpokemap.com"" role="tab"><i class="fa fa-money"></i></a></li>
              <li><a href="https://twitter.com/soflopokego" role="tab" target="_blank"><i class="fa fa-twitter"></i></a></li>
+			 <li><a href="https://www.facebook.com/PokeJoin/" role="tab" target="_blank"><i class="fa fa-facebook"></i></a></li>
+			
          </ul>
      </div>
 
@@ -157,7 +184,7 @@ height: 350px;
     font-size: 14px;
     margin: 0px !important;
     font-weight: 400;
-"><p>Welcome to WorldPokeMap!<p><br>
+"><p>Welcome to WorldPokeMap!<p>
         <p style="
     font-size: 15px;
 margin-top: -30px;
@@ -172,10 +199,9 @@ margin-top: -30px;
 <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
 <img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
 </form>
-        <br><br>
         <button class="close" onclick="getElementById('window').style.visibility= 'hidden';" style="
     position: absolute;
-    margin-top: -25px;
+    margin-top: -40px;
     margin-left: -15px;
     padding: 2.2px;
     color: #585858 !important;
@@ -188,6 +214,41 @@ margin-top: -30px;
     </div>
   <div id="map" class="sidebar-map"></div>
 </div>
+<div class="mobilehide1"><div class="ads2"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- LONGv3 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:160px;height:600px"
+     data-ad-client="ca-pub-4882649856459352"
+     data-ad-slot="4877166021"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></div>
+		<div class="footer">
+<div class="mobileads2"><center>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- MOBILE -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:320px;height:100px"
+     data-ad-client="ca-pub-4882649856459352"
+     data-ad-slot="7924704028"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</div></center>
+<div class="mobileads1"><center>
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- long -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:728px;height:90px"
+     data-ad-client="ca-pub-4882649856459352"
+     data-ad-slot="7449265221"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+</center></div>
+</div>
 <script src="lib/map.js"></script>
 
 </body>
+
