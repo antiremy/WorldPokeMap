@@ -13,6 +13,11 @@ $zoom = $_POST['zoom'];
 $json = '{
    "query":{
       "bool":{
+        "must": {
+          "range" : {
+            "disappearTime" : {"gte": "now","lte": "now+1d/s"}
+          }
+        },
          "filter":{
             "geo_bounding_box":{
                "location":{

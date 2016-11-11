@@ -19,6 +19,11 @@ $json = '{
             "rarity": "Rare"
           }
         },
+        "must": {
+          "range" : {
+            "disappearTime" : {"gte": "now","lte": "now+1d/s"}
+          }
+        },
          "filter":{
             "geo_bounding_box":{
                "location":{
