@@ -11,9 +11,10 @@
     <link rel="stylesheet" href="css/marker-cluster-default.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
-	   <link rel="stylesheet" href="css/main.css" />
+	  <link rel="stylesheet" href="css/main.css" />
     <link rel="stylesheet" href="css/leaflet-sidebar.min.css" />
     <link rel="stylesheet" href="css/leaflet-gplaces-autocomplete.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
 
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
@@ -66,17 +67,13 @@ p {
 }
 #header > h3 {
 color: #191919 !important;}
-.autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
-.autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
-.autocomplete-selected { background: #F0F0F0; }
-.autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
-.autocomplete-group { padding: 2px 5px; }
-.autocomplete-group strong { display: block; border-bottom: 1px solid #000; }
-
+.select2-dropdown {
+  z-index: 9999;
+}
 
     </style>
     <script src="lib/jquery-3.1.1.min.js"></script>
-    <script src="lib/jquery.autocomplete.min.js"></script>
+    <script src="lib/select2.full.min.js"></script>
     <script src="lib/leaflet.js"></script>
     <script src="lib/ngeohash.js"></script>
     <script src="lib/leaflet.markercluster.js"></script>
@@ -85,6 +82,7 @@ color: #191919 !important;}
     <script src="lib/leaflet-gplaces-autocomplete.js"></script>
     <script src="lib/store.min.js"></script>
     <script src="lib/push.min.js"></script>
+    <script src="lib/leaflet.smoothmarkerbouncing.js"></script>
     <!-- <script src="lib/bootstrap3-typeahead.min.js"></script>
     <script src="lib/bootstrap-tokenfield.min.js"></script> -->
     <script src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***&libraries=places"></script>
@@ -153,14 +151,16 @@ color: #191919 !important;}
               Ultra Rare
             </label>
           </div>
-          <label>
-            <input type="text" class="form-control" id="pokeHide" value=""/>
-            Hide Pokemon
-          </label>
           <div class="form-group">
             <label>
               <span><input type="number" id="notifyIV" min="0" max="100" data-bind="value:notifyRarity" />%</span>
               Notify of IV
+            </label>
+          </div>
+          <div class="form-group">
+            <label>
+              <select type="text" class="form-control" multiple="multiple" id="pokeHide" value=""></select>
+              Hide Pokemon
             </label>
           </div>
 
