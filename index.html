@@ -22,11 +22,13 @@
     <!--[if lte IE 8]>
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
     <![endif]-->
-    <style>
+      <style>
         html, body, #map{ height: 100%; padding: 0; margin: 0;}
 		   .sidebar {
             width: 300px;
         }
+		#header > center {
+		display: none;}
 
 		#window {
     color: black !important;
@@ -47,12 +49,16 @@
     overflow: auto;
     }
     .sidebar.collapsed {
-        height: 200px;
+        height: 350px;
     	margin-top: 50px;
     }
     .sidebar-tabs>ul>li {
         margin-left: -13px !important;
     	}
+     .sidebar-tabs>ul>li.active {
+	 color: #000;
+    background-color: #ffffff;
+}
     .sidebar-left .sidebar-tabs {
         height: 350px;
     	}
@@ -61,6 +67,7 @@
   	}
     .sidebar {
     height: 350px;
+	    margin-top: 50px;
     }
     p {
         margin: 0 0 .5em 0 !important;
@@ -91,18 +98,36 @@
 </head>
 <body>
 <header id="header">
-       <div class="logo">PokéJoin </div>
 
-<img src="https://images-2.discordapp.net/.eJwFwe0NgyAQANBdGIC7IseHMzT91QUIEjRRj8CZNGnc3ff-6uq7mtUq0sYMsGwjc1_0EO6pFl2Z615S24bOfEASSXk9yikDDEYbXo7IxwkjkkMw1llCP3nEgMFES_Dhb_nJmyvrdlZ1P27iI8A.dkdSgMI9w0R9peV9UaDEqJmKQiE?width=300&amp;height=300" style="
-    width: 40px;
+
+<center><img src="https://images-1.discordapp.net/.eJwFwUsKwyAQANC7eABnYnUSc4SSVQPdixEjxA86XZSSu_e9n_j0S6ziZG5jBTjS8LUfcnDtLgYZa41XcC0N6WsGx-z8mUPhAQqtXiYyZrYPtGgIQWnSBmc9aSJSC1qC13PbXeHUQ_6-lWwlivsP_skk_w.xmpY0DR7hXVd3hmbv38gMdv4sNk?width=396&height=300" style="
+    width: 80px;
     position: inherit;
 	    margin-top: 6px;
-">
+"></center>
+<div class="logo1">
+<br><h3 style="
+    font-size: 12.5px;
+    margin-top: -12%;
+    color: #353535;
+    margin-left: 1%;
+    "><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=CH2K3ZYYNFVLS">Want faster load time? Get Pro</a>
+
+  </h3>
+
 </div></div>
+
+
 <div class="mobilehide1"><h1><a href="https://forum.pokejoin.com/get-your-area-covered/" class="1">Add Your Area / City</a></h1></div>
-<h3><i class="fa fa-star" aria-hidden="true"></i> <a href="https://pokejoin.com/stats">Nests & Spawns</a></h3>
-<h3><a href="https://forum.pokejoin.com/faq/"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a></h3>
-<h3><a href="https://forum.pokejoin.com/pokejoin-update/">Unlock Pro</a></h3>
+<h3><i class="fa fa-star" aria-hidden="true" style="
+    color: #ff5c5c !important;
+"></i> <a href="https://pokejoin.com/stats">Nests &amp; Spawns</a></h3>
+<h3><a href="https://forum.pokejoin.com/faq/"><i class="fa fa-question-circle" aria-hidden="true" style="
+    color: #ff5c5c !important;
+"></i> FAQ</a></h3>
+<h3><a href="https://forum.pokejoin.com/pokejoin-update/"><i class="fa fa-unlock-alt" aria-hidden="true" style="
+    color: #ff5c5c !important;
+"></i> Unlock Pro</a></h3>
 
       </header>
   <div id="sidebar" class="sidebar collapsed">
