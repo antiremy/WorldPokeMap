@@ -748,8 +748,8 @@ blockquote, q {
   content: '';
   content: none; }
 #header {
-     background: #e8e8e8 !important;
-    border-bottom: 1px solid #d6d6d6;
+    background: rgb(242, 239, 233) !important;
+    border-bottom: 1px solid #b5b5b5;
 }
 ::-webkit-input-placeholder { color: #333333; opacity: 1 !important; } :-moz-placeholder { 
 ::color: #333333;} ::-moz-placeholder {color: #333333;} :-ms-input-placeholder {color: 
