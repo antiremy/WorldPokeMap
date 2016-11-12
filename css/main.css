@@ -1,3 +1,4 @@
+
 @charset "UTF-8"; @import 
 url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css); 
 @import url(https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css); /* 
@@ -722,7 +723,7 @@ blockquote, q {
   content: '';
   content: none; }
 #header {
-        background: #ffffff !important;
+     background: #e8e8e8 !important;
     border-bottom: 1px solid #d6d6d6;
 }
 ::-webkit-input-placeholder { color: #333333; opacity: 1 !important; } :-moz-placeholder { 
@@ -1353,6 +1354,20 @@ table {
     margin-left: 8.3333333333%; } } @media screen and (max-width: 480px) {
   .row > * {
     padding: 0 0 0 1.25em; }
+	#header > center {
+	display: block !important;}
+	.sidebar-left .sidebar-content {
+	margin-top: 150px;
+	}
+	.sidebar.collapsed {
+	height: 350px;
+	}
+	.sidebar-left .sidebar-tabs {
+	margin-top: 150px;}
+	#header {
+	height: 7em !important;}
+	.sidebar.leaflet-touch {
+	border-right: none !important;}
   .row {
     margin: 0 0 -1px -1.25em; }
   .row.uniform > * {
@@ -2151,7 +2166,11 @@ input[type="button"], button, .button {
   body {
     padding-top: 44px; }
   #header {
-    height: 44px; }
+    height: 7em !important; }
+	.ads2{
+	display: none !important;}
+	.leaflet-right {
+	margin-top: 70px;}
     #header > h1 {
       left: 1em; }
       #header > h1 a {
