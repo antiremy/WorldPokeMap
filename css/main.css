@@ -28,6 +28,9 @@ body > div.footer > div.mobileads1 {
 .mobileads1 {
 	display: block;
 }
+.footer {
+z-index: 1000 !important;
+}
 .mobileads2 {
 	display: none;
 }
@@ -145,7 +148,14 @@ visibility: visible !important;
 } 
 }
 @media only screen and (min-device-width : 0px) and (max-device-width : 480px){
-.mobileads2 {
+.leaflet-top .leaflet-control {
+	margin-top: 35px !important;
+	}
+	#header {
+	    background: rgba(232, 232, 232, 0.68) !important;
+    border-bottom: none;
+	}
+	.mobileads2 {
 	display: block !important;
 	}
 	.mobileads1 {
