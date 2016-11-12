@@ -23,13 +23,13 @@ color: #2495ff !important;
     text-align: center !important;
 }
 body > div.footer > div.mobileads1 {
-	display: block !important;
+	display: block;
 }
 .mobileads1 {
-	display: block !important;
+	display: block;
 }
 .mobileads2 {
-	display: none !important;
+	display: none;
 }
 
 
@@ -145,7 +145,10 @@ visibility: visible !important;
 } 
 }
 @media only screen and (min-device-width : 0px) and (max-device-width : 480px){
-.mobileads1 {
+.mobileads2 {
+	display: block !important;
+	}
+	.mobileads1 {
 	display: none !important;
 	}
 #notify-perfection {
