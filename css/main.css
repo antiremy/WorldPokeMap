@@ -22,6 +22,15 @@ color: #2495ff !important;
     text-decoration: none !important;
     text-align: center !important;
 }
+body > div.footer > div.mobileads1 {
+	display: block !important;
+}
+.mobileads1 {
+	display: block !important;
+}
+.mobileads2 {
+	display: none !important;
+}
 
 
 	#nav > div.box > p:nth-child(1) {
@@ -136,6 +145,9 @@ visibility: visible !important;
 } 
 }
 @media only screen and (min-device-width : 0px) and (max-device-width : 480px){
+.mobileads1 {
+	display: none !important;
+	}
 #notify-perfection {
     position: static !important;
     width: 100% !important;
