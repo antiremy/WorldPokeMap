@@ -21,7 +21,7 @@ $json = '{
         },
         "must": {
           "range" : {
-            "disappearTime" : {"gte": "now","lte": "now+15m"}
+            "disappearTime" : {"gte": "now","lte": "now+1d"}
           }
         },
          "filter":{
