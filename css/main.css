@@ -55,6 +55,9 @@ span.label-countdown {
     margin-left: 0px !important;
 color: black !important;
 }
+input[type="text"], input[type="password"], input[type="email"] {
+    width: 300px !important;
+}
 #window {
     color: black !important;
     display: block;
