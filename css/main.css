@@ -60,7 +60,7 @@ span.label-countdown {
 color: black !important;
 }
 input[type="text"], input[type="password"], input[type="email"] {
-    width: 300px !important;
+    width: 400px !important;
 	    height: 30px !important;
     margin-top: 10px;
 }
