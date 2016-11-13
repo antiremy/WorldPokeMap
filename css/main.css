@@ -1559,7 +1559,6 @@ color: #ffed00 !important;
     margin-top: -7%;
 }
 body { position: fixed !important;
-    position: initial !important;
     width: 100%;
 	}
 .select-style {
