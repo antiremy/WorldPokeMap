@@ -28,6 +28,7 @@ color: #2495ff !important;
 }
 body > div.footer > div.mobileads1 {
 	display: block;
+	margin-left: -60%;
 }
 .mobileads1 {
 	display: block;
