@@ -26,6 +26,11 @@ color: #2495ff !important;
 	background: #fdfdfd url(https://images-2.discordapp.net/.eJwFwe0NgyAQANBdGIC7IseHMzT91QUIEjRRj8CZNGnc3ff-6uq7mtUq0sYMsGwjc1_0EO6pFl2Z615S24bOfEASSXk9yikDDEYbXo7IxwkjkkMw1llCP3nEgMFES_Dhb_nJmyvrdlZ1P27iI8A.dkdSgMI9w0R9peV9UaDEqJmKQiE?width=300&height=300) no-repeat 99% 50%;
     background-size: 30px;
 }
+
+.leaflet-control-zoom {
+  z-index:99999 !important;
+  margin-bottom:500% !important;
+}
 body > div.footer > div.mobileads1 {
 	display: block;
 	margin-left: -60%;
@@ -167,6 +172,7 @@ visibility: visible !important;
 	}
 	.mobileads2 {
 	display: block !important;
+  position: fixed !important;
 	}
   .leaflet-control-zoom {
     margin-bottom:500% !important;
@@ -1403,7 +1409,7 @@ table {
 	.sidebar-left .sidebar-tabs {
 	margin-top: 150px;}*/
 	#header {
-	height: 7em !important;}
+	height: 6.7em !important;}
 	/*.sidebar.leaflet-touch {
 	border-right: none !important;}*/
   .row {
