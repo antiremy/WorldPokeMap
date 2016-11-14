@@ -167,6 +167,7 @@ visibility: visible !important;
 	}
 	.mobileads2 {
 	display: block !important;
+		position: fixed !important;
 	}
   .leaflet-control-zoom {
     margin-bottom:500% !important;
@@ -1403,7 +1404,7 @@ table {
 	.sidebar-left .sidebar-tabs {
 	margin-top: 150px;}*/
 	#header {
-	height: 7em !important;}
+	height: 6.7em !important;}
 	/*.sidebar.leaflet-touch {
 	border-right: none !important;}*/
   .row {
