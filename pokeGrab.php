@@ -15,11 +15,6 @@ $json = '{
    "query":{
       "bool":{
         "must": {
-          "match": {
-            "rarity": "Common"
-          }
-        },
-        "must": {
           "range" : {
             "disappearTime" : {"gte": "now","lte": "now+1d"}
           }
