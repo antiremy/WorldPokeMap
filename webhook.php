@@ -27,7 +27,7 @@ if($gjson->type == "pokemon") {
     'type' => 'point',
     'id' => $eid,
     'body' => [
-      'location' => [$lat,$lon],
+      'location' => [$lon,$lat],
       'disappearTime' => $time,
       'rarity' => $rarity,
       'pokemon_id' => $pid,
