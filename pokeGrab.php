@@ -2,7 +2,14 @@
 
 use Elasticsearch\ClientBuilder;
 require 'vendor/autoload.php';
-$client = ClientBuilder::create()->build();
+// $hosts = [
+// 	'10.0.0.3',
+// 	'10.0.0.4',
+// 	'10.0.0.5'
+// ];
+
+
+$client = ClientBuilder::create()->build(); //->setHosts($hosts)->build();
 
 $northWestLat = $_POST['northWestLat'];
 $northWestLng = $_POST['northWestLng'];
