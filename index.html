@@ -45,6 +45,24 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
     <![endif]-->
       <style>
+	      #loading {
+    position: fixed;
+    z-index: 999 !important;
+    margin-top: 3%;
+    padding: 15px;
+    width: 100%;
+    color: #000000;
+    font-family: sans-serif;
+    font-size: 25px;
+    text-align: center !Important;
+    height: 100% !important;
+    border-radius: 10px;
+    padding-right: 6%;
+    padding-top: 12%;
+    background-size: 50% 50%;
+    background: rgba(255, 255, 255, .8) url(https://forum.pokejoin.com/wp-content/uploads/2016/08/cart_pokemon02.gif) no-repeat 69% 20%;
+}
+
         html, body, #map{ height: 100%; padding: 0; margin: 0;}
 		   .sidebar {
             width: 300px;
@@ -167,6 +185,16 @@
     </script>
 </head>
 <body>
+	<div id="loading" style="z-index: 999;">
+        <big>WPM is finding pokemon.....</big>
+  <br>
+
+  <p style="
+    color: #ff5c5c;
+">May take up to 45 seconds to load your area.<br>
+<a href="https://blog.worldpokemap.com/2016/11/12/wpm/">Want more features? Unlock WPM Pro</a></p>
+
+  </div>
 <header id="header">
 
 
