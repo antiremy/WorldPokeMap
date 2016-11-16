@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 // ];
 
 
-$client = ClientBuilder::create()->build(); //->setHosts($hosts)->build();
+$client = ClientBuilder::create()->setHosts(['10.132.63.179'])->build();
 
 $northWestLat = $_POST['northWestLat'];
 $northWestLng = $_POST['northWestLng'];
@@ -54,7 +54,7 @@ $json = '{
 $params = [
   'index' => 'pokemon',
   'type' => 'point',
-  'size' => 10000,
+  'size' => 1000,
   'body' => $json
 ];
 

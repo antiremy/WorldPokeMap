@@ -7,7 +7,7 @@ define('TIMEZONE','UTC');
 date_default_timezone_set(TIMEZONE);
 use Elasticsearch\ClientBuilder;
 require 'vendor/autoload.php';
-$client = ClientBuilder::create()->build();
+$client = ClientBuilder::create()->setHosts(['10.132.60.89'])->build();
 
 if($gjson->type == "pokemon") {
   $eid = $gjson->message->encounter_id;
