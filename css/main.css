@@ -172,7 +172,6 @@ visibility: visible !important;
 	}
 	.mobileads2 {
 	display: block !important;
-		position: fixed !important;
 	}
   .leaflet-control-zoom {
     margin-bottom:500% !important;
