@@ -27,6 +27,7 @@ color: #2495ff !important;
     background-size: 30px;
 }
 
+
 .leaflet-control-zoom {
   z-index:99999 !important;
   margin-bottom:500% !important;
@@ -157,12 +158,40 @@ li {
 }
 	.mobilehide { display: none !important;} .mobilehide 1{ display: inline-block
 !important;} @media only screen and (min-width : 1224px) {
+  .pac-container {
+    background-color: #fff;
+    position: absolute!important;
+    z-index: 1000;
+    border-radius: 2px;
+    border-top: 1px solid #d9d9d9;
+    font-family: Arial,sans-serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    top: 3em !important;
+}
 #nav {
 box-shadow: 0 0 1.5em 0 rgba(0, 0, 0, 0.2); transform: translateX(0px) !important;
 visibility: visible !important;
 }
 }
 @media only screen and (min-device-width : 0px) and (max-device-width : 480px){
+  .pac-container {
+    background-color: #fff;
+    position: absolute!important;
+    z-index: 100000;
+    border-radius: 2px;
+    border-top: 1px solid #d9d9d9;
+    font-family: Arial,sans-serif;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    overflow: hidden;
+    top: 6.5em !important;
+}
 .leaflet-top .leaflet-control {
 	margin-top: 35px !important;
 	}
