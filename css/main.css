@@ -2403,7 +2403,7 @@ input[type="button"], button, .button {
 #header, #map, #footer {
   position: absolute; }
 #header {
-  height: 3.5em;
+  height: 3em;
   width: 100%; }
 #map {
   top: 3.5em;
