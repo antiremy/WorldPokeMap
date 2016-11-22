@@ -35,7 +35,8 @@ if($gjson->type == "pokemon") {
       'iv_defense' => $defense,
       'iv_stamina' => $stamina,
       'move_1' => $move1,
-      'move_2' => $move2
+      'move_2' => $move2,
+      'timestamp' => date("Y/m/d H:i:s T")
     ]
   ];
   $response = $client->index($params);

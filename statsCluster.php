@@ -16,6 +16,7 @@ $northWestLng = $_POST['northWestLng'];
 $southEastLat = $_POST['southEastLat'];
 $southEastLng = $_POST['southEastLng'];
 $zoom = $_POST['zoom'];
+$pid = $_POST['pid'];
 $rarities = ['body'=>[]];
 if (!isset($_POST['common'])) {
   $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
@@ -281,10 +282,8 @@ $params = [
     'query' => [
       'bool' => [
         'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gt' => 'now'
-            ]
+          'term' => [
+            'pokemon_id' => $pid
           ]
         ],
         'filter' => [

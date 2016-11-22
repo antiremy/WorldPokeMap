@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+ga('create', 'UA-60539517-2', 'auto');
+ga('send', 'pageview');
+</script>
+    <title>WorldPokéMap Pro</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <link rel="apple-touch-icon" sizes="57x57" href="appIcons/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="appIcons/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="appIcons/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="appIcons/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="appIcons/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="appIcons/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="appIcons/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="appIcons/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="appIcons/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="appIcons/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="appIcons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="appIcons/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="appIcons/favicon-16x16.png">
+    <link rel="manifest" href="appIcons/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="appIcons/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="css/leaflet.css" />
+    <link rel="stylesheet" href="css/marker-cluster-default.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css" />
+	  <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/leaflet-sidebar.min.css" />
+    <link rel="stylesheet" href="css/leaflet-gplaces-autocomplete.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
+    <![endif]-->
+    <style>
+        html, body, #map{ height: 100%; padding: 0; margin: 0;}
+		   .sidebar {
+            width: 300px;
+        }
+
+		#window {
+    color: black !important;
+    display: block;
+    position: absolute;
+    background: rgba(255,255,255,0.93);
+	  border: 1px solid #a0a0a0;
+    border-radius: 10px;
+    width: 280px;
+    height: 280px;
+    top: 50%;
+    margin-top: -120px;
+    left: 50%;
+    margin-left: -150px;
+    z-index: 2000;
+    padding: 10px;
+    text-align: center;
+    overflow: auto;
+    }
+    .sidebar.collapsed {
+        height: 200px;
+    	  margin-top: 50px;
+    }
+    .sidebar-tabs>ul>li>a {
+        margin-left: -4px !important;
+    	}
+    .sidebar-left .sidebar-tabs {
+        height: 350px;
+    	}
+  	.sidebar-left .sidebar-content {
+  	   height: 350px;
+  	}
+    .sidebar-left {
+      height:200px;
+    }
+    .sidebar {
+      height: 350px;
+    }
+    @media only screen and (max-device-width: 480px) {
+      #pac-input {
+        margin-top:-10px
+      }
+    }
+    @media only screen and (min-device-width: 480px) {
+      .sidebar {
+        margin-top: 50px !important;
+      }
+      #pac-input {
+        margin-top:5px;
+      }
+      .leaflet-control-zoom {
+        margin-bottom: 50px !important;
+      }
+      #header > center {
+        display:none;
+      }
+    }
+    p {
+        margin: 0 0 .5em 0 !important;
+    }
+    #header > h3 {
+    color: #191919 !important;}
+    .select2-dropdown {
+      z-index: 9999;
+    }
+    .select2 {
+      width: 200px !important
+    }
+
+    </style>
+    <script src="lib/jquery-3.1.1.min.js"></script>
+    <script src="lib/moment.js"></script>
+    <script src="lib/select2.full.min.js"></script>
+    <script src="lib/leaflet.js"></script>
+    <script src="lib/ngeohash.js"></script>
+    <script src="lib/leaflet.markercluster.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="lib/leaflet-sidebar.min.js"></script>
+    <script src="lib/leaflet-gplaces-autocomplete.js"></script>
+    <script src="lib/store.min.js"></script>
+    <script src="lib/push.min.js"></script>
+    <script src="lib/leaflet.smoothmarkerbouncing.js"></script>
+    <!-- <script src="lib/bootstrap3-typeahead.min.js"></script>
+    <script src="lib/bootstrap-tokenfield.min.js"></script> -->
+    <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+    <script>
+    function initSearch() {
+      var input = (document.getElementById('pac-input'));
+      var autocomplete = new google.maps.places.Autocomplete(input);
+      autocomplete.addListener('place_changed', function() {
+        var place = autocomplete.getPlace();
+        var latlng = L.latLng([place['geometry']['location'].lat(),place['geometry']['location'].lng()])
+        map.setView(latlng,14)
+        searchMarker.setLatLng(latlng)
+        if (!map.hasLayer(searchMarker)) {
+          searchMarker.addTo(map)
+        }
+        search()
+      })
+    }
+    </script>
+
+</head>
+<body>
+<header id="header">
+       <!-- <div class="logo">PokéJoin </div> -->
+
+<center><img src="images/RJLSantiremyV2.png" style="
+    width: 60px;
+    position: static;
+	    margin-top: 10px;
+"></center>
+</div></div>
+<div class="mobilehide1"><h1><a href="https://blog.worldpokemap.com/2016/11/14/add-your-area/" class="1">Add Your Area / City</a></h1></div>
+<h3><i class="fa fa-star" aria-hidden="true"></i> <a href="https://blog.worldpokemap.com/2016/11/14/about-wpm/">About WPM</a></h3>
+<h3><a href="https://forum.pokejoin.com/faq/"><i class="fa fa-question-circle" aria-hidden="true"></i> FAQ</a></h3>
+<h3><a href="#">Welcome To Pro</a></h3>
+<input id="pac-input" class="controls" type="text" placeholder="Enter a location">
+
+      </header>
+  <div id="sidebar" class="sidebar collapsed" style="margin-top:7.5em;">
+     <!-- Nav tabs -->
+     <div class="sidebar-tabs">
+         <ul role="tablist">
+             <li><a href="#options" role="tab"><i class="fa fa-gear"></i></a></li>
+             <li><a href="javascript:;" id="location" role="tab" target="_blank"><i class="fa fa-location-arrow"></i></a></li>
+             <li><a href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=CH2K3ZYYNFVLS" role="tab"><i class="fa fa-money"></i></a></li>
+             <li><a href="https://twitter.com/worldpokemap" role="tab" target="_blank"><i class="fa fa-twitter"></i></a></li>
+			 <li><a href="https://www.facebook.com/PokeJoin/" role="tab" target="_blank"><i class="fa fa-facebook"></i></a></li>
+
+         </ul>
+     </div>
+
+     <!-- Tab panes -->
+     <div class="sidebar-content">
+         <div class="sidebar-pane" id="options">
+          <h1 class="sidebar-header">Settings<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+          <select class="selectpicker" id="pokeIDChoice" value="1" ><option value="1">Bulbasaur</option><option value="2">Ivysaur</option><option value="3">Venusaur</option><option value="4">Charmander</option><option value="5">Charmeleon</option><option value="6">Charizard</option><option value="7">Squirtle</option><option value="8">Wartortle</option><option value="9">Blastoise</option><option value="10">Caterpie</option><option value="11">Metapod</option><option value="12">Butterfree</option><option value="13">Weedle</option><option value="14">Kakuna</option><option value="15">Beedrill</option><option value="16">Pidgey</option><option value="17">Pidgeotto</option><option value="18">Pidgeot</option><option value="19">Rattata</option><option value="20">Raticate</option><option value="21">Spearow</option><option value="22">Fearow</option><option value="23">Ekans</option><option value="24">Arbok</option><option value="25">Pikachu</option><option value="26">Raichu</option><option value="27">Sandshrew</option><option value="28">Sandslash</option><option value="29">Nidoran_</option><option value="30">Nidorina</option><option value="31">Nidoqueen</option><option value="32">Nidoran_</option><option value="33">Nidorino</option><option value="34">Nidoking</option><option value="35">Clefairy</option><option value="36">Clefable</option><option value="37">Vulpix</option><option value="38">Ninetales</option><option value="39">Jigglypuff</option><option value="40">Wigglytuff</option><option value="41">Zubat</option><option value="42">Golbat</option><option value="43">Oddish</option><option value="44">Gloom</option><option value="45">Vileplume</option><option value="46">Paras</option><option value="47">Parasect</option><option value="48">Venonat</option><option value="49">Venomoth</option><option value="50">Diglett</option><option value="51">Dugtrio</option><option value="52">Meowth</option><option value="53">Persian</option><option value="54">Psyduck</option><option value="55">Golduck</option><option value="56">Mankey</option><option value="57">Primeape</option><option value="58">Growlithe</option><option value="59">Arcanine</option><option value="60">Poliwag</option><option value="61">Poliwhirl</option><option value="62">Poliwrath</option><option value="63">Abra</option><option value="64">Kadabra</option><option value="65">Alakazam</option><option value="66">Machop</option><option value="67">Machoke</option><option value="68">Machamp</option><option value="69">Bellsprout</option><option value="70">Weepinbell</option><option value="71">Victreebel</option><option value="72">Tentacool</option><option value="73">Tentacruel</option><option value="74">Geodude</option><option value="75">Graveler</option><option value="76">Golem</option><option value="77">Ponyta</option><option value="78">Rapidash</option><option value="79">Slowpoke</option><option value="80">Slowbro</option><option value="81">Magnemite</option><option value="82">Magneton</option><option value="83">Farfetch'd</option><option value="84">Doduo</option><option value="85">Dodrio</option><option value="86">Seel</option><option value="87">Dewgong</option><option value="88">Grimer</option><option value="89">Muk</option><option value="90">Shellder</option><option value="91">Cloyster</option><option value="92">Gastly</option><option value="93">Haunter</option><option value="94">Gengar</option><option value="95">Onix</option><option value="96">Drowzee</option><option value="97">Hypno</option><option value="98">Krabby</option><option value="99">Kingler</option><option value="100">Voltorb</option><option value="101">Electrode</option><option value="102">Exeggcute</option><option value="103">Exeggutor</option><option value="104">Cubone</option><option value="105">Marowak</option><option value="106">Hitmonlee</option><option value="107">Hitmonchan</option><option value="108">Lickitung</option><option value="109">Koffing</option><option value="110">Weezing</option><option value="111">Rhyhorn</option><option value="112">Rhydon</option><option value="113">Chansey</option><option value="114">Tangela</option><option value="115">Kangaskhan</option><option value="116">Horsea</option><option value="117">Seadra</option><option value="118">Goldeen</option><option value="119">Seaking</option><option value="120">Staryu</option><option value="121">Starmie</option><option value="122">Mr. Mime</option><option value="123">Scyther</option><option value="124">Jynx</option><option value="125">Electabuzz</option><option value="126">Magmar</option><option value="127">Pinsir</option><option value="128">Tauros</option><option value="129">Magikarp</option><option value="130">Gyarados</option><option value="131">Lapras</option><option value="132">Ditto</option><option value="133">Eevee</option><option value="134">Vaporeon</option><option value="135">Jolteon</option><option value="136">Flareon</option><option value="137">Porygon</option><option value="138">Omanyte</option><option value="139">Omastar</option><option value="140">Kabuto</option><option value="141">Kabutops</option><option value="142">Aerodactyl</option><option value="143">Snorlax</option><option value="144">Articuno</option><option value="145">Zapdos</option><option value="146">Moltres</option><option value="147">Dratini</option><option value="148">Dragonair</option><option value="149">Dragonite</option><option value="150">Mewtwo</option><option value="151">Mew</option></select>
+
+         </div>
+
+         <div class="sidebar-pane" id="profile">
+             <h1 class="sidebar-header">Profile<span class="sidebar-close"><i class="fa fa-caret-left"></i></span></h1>
+             <br>
+             <form action="login/index.php" method="post">
+                 Username:<br />
+                 <input type="text" name="username" value="" />
+                 <br /><br />
+                 Password:<br />
+                 <input type="password" name="password" value="" />
+                 <br /><br />
+                 <input type="submit" class="btn btn-info" value="Login" />
+                 <br><br>or
+             </form>
+             <br>
+             <a href="login/register.php" role="button" class="btn btn-primary">Register</a>
+         </div>
+
+     </div>
+   </div>
+  <div id="window">
+        <p style="
+    /* color: #212121; */
+    font-size: 14px;
+    margin: 0px !important;
+    font-weight: 400;
+"><p>Welcome to WorldPokeMap!<p>
+        <p style="
+    font-size: 15px;
+margin-top: -30px;
+"><b>We are adding back in cities, please be patient. <br>Support us by sharing our website or donating.</b><br><br>
+        <hr style="
+    margin-top: -20px;
+    margin-bottom: 10px;
+">
+       <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="4WRHQXD55HCJ6">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+        <button class="close" onclick="getElementById('window').style.visibility= 'hidden';" style="
+    position: absolute;
+    margin-top: -40px;
+    margin-left: -15px;
+    padding: 2.2px;
+    color: #585858 !important;
+    background-color: rgba(60, 60, 60, 0);
+">
+       <i class="fa fa-times-circle fa-2x" style="
+    color: red;
+"></i>
+        </button>
+    </div>
+  <div id="map" class="sidebar-map"></div>
+</div>
+<script src="lib/stats.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***&libraries=places&callback=initSearch"></script>
+
+</body>

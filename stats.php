@@ -13,47 +13,14 @@ $northWestLng = $_POST['northWestLng'];
 $southEastLat = $_POST['southEastLat'];
 $southEastLng = $_POST['southEastLng'];
 $zoom = $_POST['zoom'];
+$pid = $_POST['pid'];
 $json = '';
-if (isset($_POST['time'])) {
-  $time = date("Y/m/d H:i:s T",substr($_POST['time'], 0, 10));
-  $json = '{
+$json = '{
      "query":{
         "bool":{
           "must": {
-            "range" : {
-              "disappearTime" : {"gte": "now","lte": "now+1d"}
-            }
-          },
-          "must": {
-            "range": {
-              "timestamp" : {"gte": "' . $time . '","lte": "now+5m"}
-           }
-          },
-           "filter":{
-              "geo_bounding_box":{
-                 "location":{
-                    "top_left":{
-                       "lat": ' . $northWestLat . ',
-                       "lon": ' . $northWestLng . '
-                    },
-                    "bottom_right":{
-                       "lat":' . $southEastLat . ',
-                       "lon":' . $southEastLng . '
-                    }
-                 }
-              }
-           }
-        }
-     }
-   }';
-}
-else {
-  $json = '{
-     "query":{
-        "bool":{
-          "must": {
-            "range" : {
-              "disappearTime" : {"gte": "now","lte": "now+1d"}
+            "term" : {
+              "pokemon_id" : "' . $pid . '"
             }
           },
            "filter":{
@@ -73,7 +40,6 @@ else {
         }
      }
    }';
-}
 
  $client = ClientBuilder::create()->setHosts(['10.132.63.179'])->build();
  $params = [
