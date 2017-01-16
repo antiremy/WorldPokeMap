@@ -45,6 +45,27 @@
         <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.ie.css" />
     <![endif]-->
       <style>
+	        
+      .maintenance {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 1000;
+    text-align: center;
+}
+	      body > div.maintenance > div.maint-message > h2 {
+		      color: red;
+	      }
+	      .maintenance .maint-message {
+    margin-top: 5%;
+    display: inline-block;
+    background: white;
+    padding: 30px;
+    border-radius: 3px;
+}
 	     .leaflet-bar {
     box-shadow: none !important;
 	      }
@@ -330,6 +351,25 @@ margin-top: -30px;
 "></i>
         </button>
     </div>
+	<div class="maintenance" style="">
+    <div class="maint-message">
+      <h2>WPM  Is Offline from 12AM - 8AM EST every night</h2>
+      <p>Scans will automatically turn off / on at those times</p>
+      
+      <p>Are captcha costs alone are $30-40 daily, help us continue our service and expand areas by donating</a></p>
+      
+     <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
+<input type="hidden" name="cmd" value="_s-xclick">
+<input type="hidden" name="hosted_button_id" value="4WRHQXD55HCJ6">
+<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
+</form>
+
+
+ 
+    </div>
+  </div>
+  
   <div id="map" class="sidebar-map"></div>
 </div>
 <div id="captchaStats">
