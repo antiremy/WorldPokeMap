@@ -8,237 +8,52 @@ require 'vendor/autoload.php';
 //         '10.0.0.5'
 // ];
 
-
-$client = ClientBuilder::create()->setHosts(['10.132.63.179'])->build();
+$client = ClientBuilder::create()->setHosts(['10.132.84.37'])->build();
 
 $northWestLat = $_POST['northWestLat'];
 $northWestLng = $_POST['northWestLng'];
 $southEastLat = $_POST['southEastLat'];
 $southEastLng = $_POST['southEastLng'];
 $zoom = $_POST['zoom'];
-$rarities = ['body'=>[]];
-if (!isset($_POST['common'])) {
-  $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
-  $rarities['body'][] = [
-    'size' => 1,
-    'query' => [
-      'bool' => [
-        'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gte' => 'now'
-            ]
-          ]
-        ],
-        'must' => [
-          'match' =>[
-            'rarity' => 'Common'
-          ]
-        ],
-        'filter' => [
-          'geo_bounding_box' => [
-            'location' => [
-              'top_left' => [
-                'lat' => $northWestLat,
-                'lon' => $northWestLng
-              ],
-              'bottom_right' => [
-                'lat' => $southEastLat,
-                'lon' => $southEastLng
-              ]
-            ]
+$json = [
+  'query' => [
+    'bool' => [
+      'must_not' => [
+        'terms' => ['rarity' => []],
+      ],
+      'must' => [
+        'range' => [
+          'disappearTime' => [
+            'gte' => 'now',
+            'lte' => 'now+1d'
           ]
         ]
-      ]
-    ],
-    'aggs' => [
-      'zoom' => [
-        'geohash_grid' => [
-          'field' => 'location',
-          'precision' => $zoom
+      ],
+      'filter' => [
+        'geo_bounding_box' => [
+          'location' => [
+            'top_left' => [
+              'lat' => $northWestLat,
+              'lon' => $northWestLng
+            ],
+            'bottom_right' => [
+              'lat' => $southEastLat,
+              'lon' => $southEastLng
+            ]
+          ]
         ]
       ]
     ]
-    ];
-}
-if (!isset($_POST['uncommon'])) {
-  $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
-  $rarities['body'][] = [
-    'size' => 1,
-    'query' => [
-      'bool' => [
-        'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gte' => 'now'
-            ]
-          ]
-        ],
-        'must' => [
-          'match' =>[
-            'rarity' => 'Uncommon'
-          ]
-        ],
-        'filter' => [
-          'geo_bounding_box' => [
-            'location' => [
-              'top_left' => [
-                'lat' => $northWestLat,
-                'lon' => $northWestLng
-              ],
-              'bottom_right' => [
-                'lat' => $southEastLat,
-                'lon' => $southEastLng
-              ]
-            ]
-          ]
-        ]
-      ]
-    ],
-    'aggs' => [
-      'zoom' => [
-        'geohash_grid' => [
-          'field' => 'location',
-          'precision' => $zoom
-        ]
+  ],
+  'aggs' => [
+    'zoom' => [
+      'geohash_grid' => [
+        'field' => 'location',
+        'precision' => $zoom
       ]
     ]
-    ];
-}
-// if (!isset($_POST['rare'])) {
-//   $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
-//   $rarities['body'][] = [
-//     'size' => 1,
-//     'query' => [
-//       'bool' => [
-//         'should' => [
-//           'range' => [
-//             'disappearTime' =>[
-//               'gte' => 'now'
-//             ]
-//           ]
-//         ],
-//         'must' => [
-//           'match' =>[
-//             'rarity' => 'Rare'
-//           ]
-//         ],
-//         'filter' => [
-//           'geo_bounding_box' => [
-//             'location' => [
-//               'top_left' => [
-//                 'lat' => $northWestLat,
-//                 'lon' => $northWestLng
-//               ],
-//               'bottom_right' => [
-//                 'lat' => $southEastLat,
-//                 'lon' => $southEastLng
-//               ]
-//             ]
-//           ]
-//         ]
-//       ]
-//     ],
-//     'aggs' => [
-//       'zoom' => [
-//         'geohash_grid' => [
-//           'field' => 'location',
-//           'precision' => $zoom
-//         ]
-//       ]
-//     ]
-//     ];
-// }
-if (!isset($_POST['veryrare'])) {
-  $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
-  $rarities['body'][] = [
-    'size' => 1,
-    'query' => [
-      'bool' => [
-        'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gte' => 'now'
-            ]
-          ]
-        ],
-        'must' => [
-          'match' =>[
-            'rarity' => 'Very'
-          ]
-        ],
-        'filter' => [
-          'geo_bounding_box' => [
-            'location' => [
-              'top_left' => [
-                'lat' => $northWestLat,
-                'lon' => $northWestLng
-              ],
-              'bottom_right' => [
-                'lat' => $southEastLat,
-                'lon' => $southEastLng
-              ]
-            ]
-          ]
-        ]
-      ]
-    ],
-    'aggs' => [
-      'zoom' => [
-        'geohash_grid' => [
-          'field' => 'location',
-          'precision' => $zoom
-        ]
-      ]
-    ]
-    ];
-}
-if (!isset($_POST['ultrarare'])) {
-  $rarities['body'][] = ['index' => 'pokemon', 'type' => 'point'];
-  $rarities['body'][] = [
-    'size' => 1,
-    'query' => [
-      'bool' => [
-        'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gte' => 'now'
-            ]
-          ]
-        ],
-        'must' => [
-          'match' =>[
-            'rarity' => 'Ultra'
-          ]
-        ],
-        'filter' => [
-          'geo_bounding_box' => [
-            'location' => [
-              'top_left' => [
-                'lat' => $northWestLat,
-                'lon' => $northWestLng
-              ],
-              'bottom_right' => [
-                'lat' => $southEastLat,
-                'lon' => $southEastLng
-              ]
-            ]
-          ]
-        ]
-      ]
-    ],
-    'aggs' => [
-      'zoom' => [
-        'geohash_grid' => [
-          'field' => 'location',
-          'precision' => $zoom
-        ]
-      ]
-    ]
-    ];
-}
-
-// DEPRECATED FOR NATURAL PHP ARRAY
+  ]
+];
 // $json = '{
 //    "query":{
 //       "bool":{
@@ -273,55 +88,34 @@ if (!isset($_POST['ultrarare'])) {
 //    }
 // }';
 
+if (isset($_POST['common'])) {
+  array_push($json['query']['bool']['must_not']['terms']['rarity'],'1');
+}
+if (isset($_POST['uncommon'])) {
+  array_push($json['query']['bool']['must_not']['terms']['rarity'],'2');
+}
+if (isset($_POST['rare'])) {
+  array_push($json['query']['bool']['must_not']['terms']['rarity'],'3');
+}
+if (isset($_POST['veryrare'])) {
+  array_push($json['query']['bool']['must_not']['terms']['rarity'],'4');
+}
+if (isset($_POST['ultrarare'])) {
+  array_push($json['query']['bool']['must_not']['terms']['rarity'],'5');
+}
+
 $params = [
   'index' => 'pokemon',
   'type' => 'point',
-  'size' => 0,
-  'body' => [
-    'query' => [
-      'bool' => [
-        'must' => [
-          'range' => [
-            'disappearTime' =>[
-              'gt' => 'now'
-            ]
-          ]
-        ],
-        'filter' => [
-          'geo_bounding_box' => [
-            'location' => [
-              'top_left' => [
-                'lat' => $northWestLat,
-                'lon' => $northWestLng
-              ],
-              'bottom_right' => [
-                'lat' => $southEastLat,
-                'lon' => $southEastLng
-              ]
-            ]
-          ]
-        ]
-      ]
-    ],
-    'aggs' => [
-      'zoom' => [
-        'geohash_grid' => [
-          'field' => 'location',
-          'precision' => $zoom
-        ]
-      ]
-    ]
-  ]
+  'size' => 1,
+  'body' => $json
 ];
 
 
 
 try {
-  $responses = $client->search($params);
-  echo json_encode($responses);
-  // forEach ($responses as $response) {
-  //   echo json_encode($response);
-  // }
+  $response = $client->search($params);
+  echo json_encode($response);
 } catch (Exception $e) {
   echo('Error: ' . $e->getMessage() . '\n');
 }

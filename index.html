@@ -64,7 +64,7 @@
     width: 100% !important;
 }
 	      }
-	 
+
         html, body, #map{ height: 100%; padding: 0; margin: 0;}
 		   .sidebar {
             width: 300px;
@@ -167,6 +167,7 @@
     <script src="lib/store.min.js"></script>
     <script src="lib/push.min.js"></script>
     <script src="lib/leaflet.smoothmarkerbouncing.js"></script>
+    <script src="lib/xml2json.min.js"></script>
     <!-- <script src="lib/bootstrap3-typeahead.min.js"></script>
     <script src="lib/bootstrap-tokenfield.min.js"></script> -->
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -261,12 +262,12 @@
             </label>
           </div>
           <br>
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label>
               <span><input type="number" id="notifyIV" min="0" max="100" data-bind="value:notifyRarity" />%</span>
               Notify of IV
             </label>
-          </div>
+          </div> -->
           <div class="form-group">
             <label>
               <select type="text" class="form-control" multiple="multiple" id="pokeHide" class="pokemonSelect" value=""></select>
@@ -303,9 +304,9 @@
     font-weight: 400;
 "><p>Welcome to WorldPokeMap!<p>
         <p style="
-    font-size: 15px;
+    font-size: 13px;
 margin-top: -30px;
-"><b><a href="https://blog.worldpokemap.com/2016/11/14/add-your-area/">Click here for info about donating to get your area scanned.</a><br>Support us by sharing our website or donating.</b><br><br>
+"><b><a href="https://blog.worldpokemap.com/2016/11/14/add-your-area/">Click here for info about donating to get your area scanned.</a><br>Support us by sharing our website or donating.<br>Captcha Funds: $<span class = "captchaAmount"></span></p></b><br>
         <hr style="
     margin-top: -20px;
     margin-bottom: 10px;
@@ -330,6 +331,10 @@ margin-top: -30px;
         </button>
     </div>
   <div id="map" class="sidebar-map"></div>
+</div>
+<div id="captchaStats">
+  <b>Captcha Funds: $<span class = "captchaAmount"></span></b><br>
+  Spent Today: $<span class = "captchaRate"></span>
 </div>
 <div class="mobilehide1"><div class="ads2"><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <!-- LONGv3 -->

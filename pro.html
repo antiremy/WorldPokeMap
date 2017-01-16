@@ -131,6 +131,7 @@ ga('send', 'pageview');
     <script src="lib/store.min.js"></script>
     <script src="lib/push.min.js"></script>
     <script src="lib/leaflet.smoothmarkerbouncing.js"></script>
+    <script src="lib/xml2json.min.js"></script>
     <!-- <script src="lib/bootstrap3-typeahead.min.js"></script>
     <script src="lib/bootstrap-tokenfield.min.js"></script> -->
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
@@ -269,16 +270,12 @@ ga('send', 'pageview');
     /* color: #212121; */
     font-size: 14px;
     margin: 0px !important;
-    font-weight: 400;
-"><p>Welcome to WorldPokeMap!<p>
-        <p style="
-    font-size: 15px;
-margin-top: -30px;
-"><b>We are adding back in cities, please be patient. <br>Support us by sharing our website or donating.</b><br><br>
-        <hr style="
-    margin-top: -20px;
-    margin-bottom: 10px;
-">
+    font-weight: 400;"><p>Welcome to WorldPokeMap!<p>
+        <p style="font-size: 13px;margin-top: -30px;"><b><a href="https://blog.worldpokemap.com/2016/11/14/add-your-area/">Click here for info about donating to get your area scanned.</a>
+          <br>Support us by sharing our website or donating.
+          <br>Captcha Funds:
+          $<span class = "captchaAmount"></span></p></b><br>
+        <hr style="margin-top: -20px;margin-bottom: 10px;">
        <form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 <input type="hidden" name="cmd" value="_s-xclick">
 <input type="hidden" name="hosted_button_id" value="4WRHQXD55HCJ6">
@@ -299,6 +296,10 @@ margin-top: -30px;
         </button>
     </div>
   <div id="map" class="sidebar-map"></div>
+</div>
+<div id="captchaStats">
+  <b>Captcha Funds: $<span class = "captchaAmount"></span></b><br>
+  Spent Today: $<span class = "captchaRate"></span>
 </div>
 <script src="lib/promap.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***&libraries=places&callback=initSearch"></script>

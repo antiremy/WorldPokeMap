@@ -9,7 +9,7 @@ require 'vendor/autoload.php';
 // ];
 
 
-$client = ClientBuilder::create()->setHosts(['10.132.63.179'])->build();
+$client = ClientBuilder::create()->setHosts(['10.132.82.141','10.132.77.55'])->build();
 
 $northWestLat = $_POST['northWestLat'];
 $northWestLng = $_POST['northWestLng'];

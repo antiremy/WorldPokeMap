@@ -1,0 +1,25 @@
+<script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+<script>
+var data = {
+  action: 'getstats&date=2017-01-10',
+}
+$.ajax({
+    type: "POST",
+    url: "captchaStatsGrab.php",
+    data: data,
+    cache: false,
+    success: function (resp) {
+        //console.log(resp)
+        if (resp.startsWith("Error:")) {
+            console.log(resp)
+        }
+        else {
+            console.log(resp)
+            //var result = JSON.parse(resp)
+        }
+    }
+})
+</script>

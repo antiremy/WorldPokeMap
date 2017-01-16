@@ -1,0 +1,16 @@
+stdClass Object
+(
+    [message] => stdClass Object
+        (
+            [team_id] => 1
+            [gym_points] => 12068
+            [last_modified] => 1484330755529
+            [latitude] => 43.686853
+            [guard_pokemon_id] => 149
+            [enabled] => 1
+            [gym_id] => 7c6460882dd64de984554117a4e23e7a.16
+            [longitude] => -79.4021
+        )
+
+    [type] => gym
+)
