@@ -58,12 +58,15 @@ if($gjson->type == "pokemon") {
   $response = $client->index($params);
 }
 else if ($gjson->type == "gym") {
-  file_put_contents("gymOutput.txt", print_r($gjson, True));
   $teamID = $gjson->message->team_id;
   $lat = $gjson->message->latitude;
   $lon = $gjson->message->longitude;
   $guardPokeID = $gjson->message->guard_pokemon_id;
   $gymID = $gjson->message->gym_id;
+  if ( base64_encode(base64_decode($gymID, true)) === $gymID){
+    $gymID = base64_decode($gymID);
+    echo '$data is valid';
+  }
   $gymPoints = $gjson->message->gym_points;
   $params = [
     'index' => 'gyms',
