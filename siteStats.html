@@ -1,0 +1,135 @@
+<!doctype html>
+
+<html lang="en">
+<head>
+<style>
+.axis--x path {
+  display: none;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 1.5px;
+}
+</style>
+  <script
+  src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous"></script>
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.17/d3.min.js"></script> -->
+<script src="https://d3js.org/d3.v3.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
+  <meta charset="utf-8">
+
+  <title>WorldPokéMap Stats</title>
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+  <div class="container">
+    <center><h1><div><span id="pokemonCount"></span> Pokémon on WorldPokéMap</div></h1></center>
+  </div>
+  <div class="container">
+    <center>
+    <div class="col-md-4"><img src="images/forts/Mystic_large.png" width="50%"><h2><span id="mysticCount"></span> Mystic Gyms</h2></div>
+    <div class="col-md-4"><img src="images/forts/Valor_large.png" width="50%"><h2><span id="valorCount"></span> Valor Gyms</h2></div>
+    <div class="col-md-4"><img src="images/forts/Instinct_large.png" width="50%"><h2><span id="instinctCount"></span> Instinct Gyms</h2></div>
+  </center>
+  </div>
+  <center>
+  <div id = "Graph">
+  </div>
+</center>
+</body>
+<script>
+var data = []
+today = new Date();
+
+
+$.getJSON('siteStats.json', function(result) {
+  $("#pokemonCount").html(result['pokemon']['hits']['total'])
+  $("#mysticCount").html(result['mystic']['hits']['total'])
+  $("#valorCount").html(result['valor']['hits']['total'])
+  $("#instinctCount").html(result['instinct']['hits']['total'])
+  var captchas = JSON.parse(result['captchas'])
+  var captchaStats = captchas['stats']
+  for (idx in captchaStats) {
+    yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1); //setDate also supports negative values, which cause the month to rollover.
+    yesterday.setHours(idx,0,0,0);
+    data.push({
+      date: yesterday,
+      captchas: parseInt(captchaStats[idx]['volume']),
+      cost: parseFloat(captchaStats[idx]['stats'])
+    })
+  }
+})
+console.log(data)
+window.setInterval(function() {
+  $.getJSON('siteStats.json', function(result) {
+    $("#pokemonCount").html(result['pokemon']['hits']['total'])
+    $("#mysticCount").html(result['mystic']['hits']['total'])
+    $("#valorCount").html(result['valor']['hits']['total'])
+    $("#instinctCount").html(result['instinct']['hits']['total'])
+  })
+}, 60000)
+
+var margin = {top: 20, right: 20, bottom: 30, left: 50},
+        width = (0.5*screen.width) - margin.left - margin.right,
+        height = 300 - margin.top - margin.bottom;
+
+        var parseDate = d3.time.format("%Y-%b-%d").parse;
+
+        var x = d3.time.scale()
+            .range([0, width]);
+
+        var y = d3.scale.linear()
+            .range([height, 0]);
+
+        var xAxis = d3.svg.axis()
+            .scale(x)
+            .orient("bottom");
+
+        var yAxis = d3.svg.axis()
+            .scale(y)
+            .orient("left");
+
+        var line = d3.svg.line()
+            .x(function(d) { return x(d.date); })
+            .y(function(d) { return y(d.captchas); });
+        var svg = d3.select('#Graph').append('svg')
+            .attr("width", width + margin.left + margin.right)
+            .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+            .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+        x.domain(d3.extent(data,function(d) {return d.date}))
+        y.domain(d3.extent(data,function(d) {return d.captchas}))
+        svg.append("g")
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(xAxis);
+
+        svg.append("g")
+            .attr("class", "y axis")
+            .call(yAxis)
+          .append("text")
+            .attr("transform", "rotate(-90)")
+            .attr("y", 6)
+            .attr("dy", ".71em")
+            .style("text-anchor", "end")
+            .text("# of Captchas");
+
+        svg.append("path")
+            .datum(data)
+            .attr("class", "line")
+            .attr("d", line);
+</script>
+</html>
