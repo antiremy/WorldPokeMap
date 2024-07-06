@@ -1,6 +1,6 @@
 <?php
 if (isset($_POST)) {
-  $apiKey = "***REMOVED***";
+  $apiKey = "86f7e2f2cfb26bc385bf94efbc4490f7";
   $action = $_POST['action'];
 
   if ($action == "getbalance") {

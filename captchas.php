@@ -25,8 +25,8 @@
  */
 require_once "recaptchalib.php";
 // Register API keys at https://www.google.com/recaptcha/admin
-$siteKey = "***REMOVED***";
-$secret = "***REMOVED***";
+$siteKey = "6Lf2xQsUAAAAAEQnJoZ8MZ7iN3su7jTWnuJLvFiI";
+$secret = "6Lf2xQsUAAAAALqfzYLZXNub_YY7HdPkgJyfM-Jk";
 // reCAPTCHA supported 40+ languages listed here: https://developers.google.com/recaptcha/docs/language
 $lang = "en";
 // The response from reCAPTCHA
@@ -64,7 +64,7 @@ if ($resp != null && $resp->success) {
       <script>
       var CaptchaCallback = function(){
        $('.g-recaptcha').each(function(index, el) {
-           grecaptcha.render(el, {'sitekey' : '***REMOVED***'});
+           grecaptcha.render(el, {'sitekey' : '6Lf2xQsUAAAAAEQnJoZ8MZ7iN3su7jTWnuJLvFiI'});
          });
        };
       </script>

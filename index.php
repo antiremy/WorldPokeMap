@@ -302,6 +302,6 @@ ga('send', 'pageview');
   <b>Captcha Funds: $<span class = "captchaAmount"></span></b>
 </div>
 <script src="lib/promap.js"></script>
-<script src="https://maps.googleapis.com/maps/api/js?key=***REMOVED***&libraries=places&callback=initSearch"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDpCeRBeEpZ80e8uQDqHjwh7JlTz6cFQnY&libraries=places&callback=initSearch"></script>
 
 </body>

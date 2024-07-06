@@ -67,7 +67,7 @@ $from_unix_time = time();
 $day_before = strtotime("yesterday", $from_unix_time);
 $date = date('Y-m-d', $day_before);
 
-$url = 'https://2captcha.com/res.php?action=getstats&key=***REMOVED***&date=' . $date;
+$url = 'https://2captcha.com/res.php?action=getstats&key=86f7e2f2cfb26bc385bf94efbc4490f7&date=' . $date;
 
 
 $output = file_get_contents($url);
